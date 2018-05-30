@@ -1,5 +1,5 @@
 /*
- * File:    BinarySearchTree
+ * File:    BinarySearchTree.hpp
  * Author:  Spiros
  *
  * Created on May 30, 2018, 7:36 PM

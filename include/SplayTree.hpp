@@ -1,5 +1,5 @@
 /*
- * File:    SplayTree
+ * File:    SplayTree.hpp
  * Author:  Spiros
  *
  * Created on May 30, 2018, 2:59 PM
