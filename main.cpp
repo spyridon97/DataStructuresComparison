@@ -3,9 +3,10 @@
 #include <RedBlackTree.hpp>
 #include <SkipList.hpp>
 #include <SplayTree.hpp>
+#include <A2B4Tree.hpp>
 
 int main() {
-    SplayTree tree;
+    A2B4Tree tree;
     //*
     tree.insertElement(25);
     tree.insertElement(15);

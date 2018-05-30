@@ -5,25 +5,38 @@
  * Created on May 29, 2018, 5:35 PM
  */
 
-#ifndef TREECOMPARISON_REDBLACKTREE_HPP
-#define TREECOMPARISON_REDBLACKTREE_HPP
-
-enum Color {
-    RED, BLACK, DOUBLE_BLACK
-};
-
-struct Node {
-    int data;
-    int color;
-    Node *left, *right, *parent;
-
-    explicit Node(int);
-};
+#ifndef COMPARISONOFTREEIMPLEMENTATIONS_REDBLACKTREE_HPP
+#define COMPARISONOFTREEIMPLEMENTATIONS_REDBLACKTREE_HPP
 
 class RedBlackTree {
+public:
+    RedBlackTree();
+
+    ~RedBlackTree();
+
+    void insertElement(int x);
+
+    void removeElement(int x);
+
+    bool containsElement(int x);
+
+    void displayElements();
+
 private:
+    enum Color {
+        RED, BLACK, DOUBLE_BLACK
+    };
+
+    struct Node {
+        int data;
+        int color;
+        Node *left, *right, *parent;
+
+        explicit Node(int);
+    };
+
     Node *root;
-protected:
+
     void rotateLeft(Node *&);
 
     void rotateRight(Node *&);
@@ -43,20 +56,7 @@ protected:
     Node *insertBST(Node *&, Node *&);
 
     Node *deleteBST(Node *&, int);
-
-public:
-    RedBlackTree();
-
-    ~RedBlackTree();
-
-    void insertElement(int data);
-
-    void removeElement(int data);
-
-    bool containsElement(int data);
-
-    void displayElements();
 };
 
 
-#endif // TREECOMPARISON_REDBLACKTREE_HPP
+#endif // COMPARISONOFTREEIMPLEMENTATIONS_REDBLACKTREE_HPP

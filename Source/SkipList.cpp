@@ -6,6 +6,7 @@
  */
 
 #include <SkipList.hpp>
+#include <iostream>
 #include <iomanip>
 #include <experimental/random>
 
@@ -18,21 +19,6 @@ SkipList::SkipList() : head(0, max_height), tail(INF, 0), height(0) {
 }
 
 SkipList::~SkipList() = default;
-
-// returns pointer to Element with key x if x exists in list, 0 otherwise
-bool SkipList::containsElement(int x) {
-    Element *p = &head;
-    for (int i = height; i >= 0; --i) {
-        while (p->next[i]->key < x) {
-            p = p->next[i];
-        }
-    }
-
-    // now either p == &head and x <= p->next[0]->key
-    // or p != &head and p->key < x <= p->next[0]->key
-    p = p->next[0];
-    return p->key == x;  // x is at position p in list or in list
-}
 
 // inserts Element with key x into list
 void SkipList::insertElement(int x) {
@@ -91,6 +77,21 @@ void SkipList::removeElement(int x) {
     }
 }
 
+// returns pointer to Element with key x if x exists in list, 0 otherwise
+bool SkipList::containsElement(int x) {
+    Element *p = &head;
+    for (int i = height; i >= 0; --i) {
+        while (p->next[i]->key < x) {
+            p = p->next[i];
+        }
+    }
+
+    // now either p == &head and x <= p->next[0]->key
+    // or p != &head and p->key < x <= p->next[0]->key
+    p = p->next[0];
+    return p->key == x;  // x is at position p in list or in list
+}
+
 void SkipList::displayElements() {
     Element *p = head.next[0];
     while (p->key != INF) {
@@ -106,8 +107,4 @@ int SkipList::random_height() {
         ++rand_height;
     }
     return rand_height;
-}
-
-int SkipList::get_height() {
-    return height;
 }

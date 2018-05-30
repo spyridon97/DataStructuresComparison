@@ -5,13 +5,23 @@
  * Created on May 30, 2018, 2:59 PM
  */
 
-#ifndef TREECOMPARISON_SPLAYTREE_HPP
-#define TREECOMPARISON_SPLAYTREE_HPP
-
-
-typedef int KEY_TYPE;
+#ifndef COMPARISONOFTREEIMPLEMENTATIONS_SPLAYTREE_HPP
+#define COMPARISONOFTREEIMPLEMENTATIONS_SPLAYTREE_HPP
 
 class SplayTree {
+public:
+    SplayTree();
+
+    ~SplayTree();
+
+    void insertElement(int x);
+
+    void removeElement(int x);
+
+    bool containsElement(int x);
+
+    void displayElements();
+
 private:
     typedef struct Node {
         int key;
@@ -37,20 +47,7 @@ private:
 
     void inOrder(Node *root);
 
-public:
-    SplayTree();
-
-    ~SplayTree();
-
-    void insertElement(int x);
-
-    void removeElement(int x);
-
-    bool containsElement(int x);
-
-    void displayElements();
-
 };
 
 
-#endif // TREECOMPARISON_SPLAYTREE_HPP
+#endif // COMPARISONOFTREEIMPLEMENTATIONS_SPLAYTREE_HPP

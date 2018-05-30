@@ -5,11 +5,24 @@
  * Created on May 27, 2018, 7:28 PM
  */
 
-#ifndef TREECOMPARISON_AVLTREE_HPP
-#define TREECOMPARISON_AVLTREE_HPP
+#ifndef COMPARISONOFTREEIMPLEMENTATIONS_AVLTREE_HPP
+#define COMPARISONOFTREEIMPLEMENTATIONS_AVLTREE_HPP
 
 
 class AvlTree {
+public:
+    AvlTree();
+
+    ~AvlTree();
+
+    void insertElement(int x);
+
+    void removeElement(int x);
+
+    bool containsElement(int x);
+
+    void displayElements();
+
 private:
     struct Node {
         int data;
@@ -42,20 +55,7 @@ private:
     int height(Node *t);
 
     void inOrder(Node *t);
-
-public:
-    AvlTree();
-
-    ~AvlTree();
-
-    void insertElement(int x);
-
-    void removeElement(int x);
-
-    bool containsElement(int x);
-
-    void displayElements();
 };
 
 
-#endif // TREECOMPARISON_AVLTREE_HPP
+#endif // COMPARISONOFTREEIMPLEMENTATIONS_AVLTREE_HPP

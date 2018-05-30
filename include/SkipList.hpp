@@ -5,15 +5,25 @@
  * Created on May 29, 2018, 4:13 PM
  */
 
-#ifndef TREECOMPARISON_SKIPLIST_HPP
-#define TREECOMPARISON_SKIPLIST_HPP
+#ifndef COMPARISONOFTREEIMPLEMENTATIONS_SKIPLIST_HPP
+#define COMPARISONOFTREEIMPLEMENTATIONS_SKIPLIST_HPP
 
-#include <iostream>
 #include <vector>
 #include <limits>
 
-
 class SkipList {
+public:
+    SkipList();
+
+    ~SkipList();
+
+    void insertElement(int x);
+
+    void removeElement(int x);
+
+    bool containsElement(int x);
+
+    void displayElements();
 private:
     struct Element {
         Element(int k, int new_height) : key(k), next((unsigned long long) new_height + 1) {}
@@ -33,22 +43,7 @@ private:
     int height;
 
     int random_height();
-
-public:
-    SkipList();
-
-    ~SkipList();
-
-    void insertElement(int x);
-
-    void removeElement(int x);
-
-    bool containsElement(int x);
-
-    void displayElements();
-
-    int get_height();
 };
 
 
-#endif // TREECOMPARISON_SKIPLIST_HPP
+#endif // COMPARISONOFTREEIMPLEMENTATIONS_SKIPLIST_HPP

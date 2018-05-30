@@ -8,7 +8,7 @@
 #include <RedBlackTree.hpp>
 #include <iostream>
 
-Node::Node(int data) {
+RedBlackTree::Node::Node(int data) {
     this->data = data;
     color = RED;
     left = right = parent = nullptr;
@@ -20,19 +20,19 @@ RedBlackTree::RedBlackTree() {
 
 RedBlackTree::~RedBlackTree() = default;
 
-void RedBlackTree::insertElement(int data) {
-    auto *node = new Node(data);
+void RedBlackTree::insertElement(int x) {
+    auto *node = new Node(x);
     root = insertBST(root, node);
     fixInsertRedBlackTree(node);
 }
 
-void RedBlackTree::removeElement(int data) {
-    Node *node = deleteBST(root, data);
+void RedBlackTree::removeElement(int x) {
+    Node *node = deleteBST(root, x);
     fixDeleteRedBlackBTree(node);
 }
 
-bool RedBlackTree::containsElement(int data) {
-    Node *node = deleteBST(root, data);
+bool RedBlackTree::containsElement(int x) {
+    Node *node = deleteBST(root, x);
     return node != nullptr;
 }
 
@@ -56,7 +56,7 @@ void RedBlackTree::setColor(Node *&node, int color) {
     node->color = color;
 }
 
-Node *RedBlackTree::insertBST(Node *&root, Node *&ptr) {
+RedBlackTree::Node *RedBlackTree::insertBST(Node *&root, Node *&ptr) {
     if (root == nullptr) {
         return ptr;
     }
@@ -272,23 +272,19 @@ void RedBlackTree::fixDeleteRedBlackBTree(Node *&node) {
     }
 }
 
-Node *RedBlackTree::deleteBST(Node *&root, int data) {
+RedBlackTree::Node *RedBlackTree::deleteBST(Node *&root, int data) {
     if (root == nullptr) {
         return root;
     }
-
     if (data < root->data) {
         return deleteBST(root->left, data);
     }
-
     if (data > root->data) {
         return deleteBST(root->right, data);
     }
-
     if (root->left == nullptr || root->right == nullptr) {
         return root;
     }
-
     Node *temp = minValueNode(root->right);
     root->data = temp->data;
     return deleteBST(root->right, temp->data);
@@ -306,14 +302,11 @@ void RedBlackTree::inOrderBST(Node *&ptr) {
     inOrderBST(ptr->right);
 }
 
-Node *RedBlackTree::minValueNode(Node *&node) {
-
+RedBlackTree::Node *RedBlackTree::minValueNode(Node *&node) {
     Node *ptr = node;
 
     while (ptr->left != nullptr) {
         ptr = ptr->left;
     }
-
     return ptr;
 }
-
