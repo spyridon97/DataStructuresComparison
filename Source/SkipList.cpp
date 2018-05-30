@@ -1,5 +1,5 @@
 /*
- * File:    SkipList.hpp
+ * File:    SkipList.cpp
  * Author:  Spiros
  *
  * Created on May 29, 2018, 4:13 PM

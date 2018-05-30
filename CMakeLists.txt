@@ -5,19 +5,21 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall")
 set(CMAKE_CXX_STANDARD 14)
 
 set(HEADER_FILES
-        include/AvlTree.hpp
-
-        include/RedBlackTree.hpp
         include/A2B4Tree.hpp
-        include/SplayTree.hpp
-        include/SkipList.hpp)
-set(SOURCE_FILES
-        Source/AvlTree.cpp
+        include/AvlTree.hpp
+        include/BinarySearchTree.hpp
+        include/RedBlackTree.hpp
 
-        Source/RedBlackTree.cpp
+        include/SkipList.hpp
+        include/SplayTree.hpp)
+set(SOURCE_FILES
         Source/A2B4Tree.cpp
-        Source/SplayTree.cpp
-        Source/SkipList.cpp)
+        Source/AvlTree.cpp
+        Source/BinarySearchTree.cpp
+        Source/RedBlackTree.cpp
+
+        Source/SkipList.cpp
+        Source/SplayTree.cpp)
 
 include_directories(ComparisonOfTreeImplementations Source)
 include_directories(ComparisonOfTreeImplementations include)

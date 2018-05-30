@@ -1,11 +1,11 @@
 /*
- * File:    SplayTree
+ * File:    SplayTree.cpp
  * Author:  Spiros
  *
  * Created on May 30, 2018, 2:59 PM
  */
 
-#include "SplayTree.hpp"
+#include <SplayTree.hpp>
 #include <iostream>
 
 SplayTree::SplayTree() {

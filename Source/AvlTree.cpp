@@ -30,7 +30,6 @@ bool AvlTree::containsElement(int x) {
 
 void AvlTree::displayElements() {
     inOrder(root);
-    std::cout << std::endl;
 }
 
 void AvlTree::makeEmpty(AvlTree::Node *t) {
@@ -189,6 +188,6 @@ void AvlTree::inOrder(AvlTree::Node *t) {
         return;
     }
     inOrder(t->left);
-    std::cout << t->data << " ";
+    std::cout << t->data << "\n";
     inOrder(t->right);
 }

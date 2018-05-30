@@ -1,12 +1,21 @@
+/*
+ * File:    main.cpp
+ * Author:  Spiros
+ *
+ * Created on May 27, 2018, 7:28 PM
+ */
+
 #include <iostream>
+#include <A2B4Tree.hpp>
 #include <AvlTree.hpp>
+#include <BinarySearchTree.hpp>
 #include <RedBlackTree.hpp>
 #include <SkipList.hpp>
 #include <SplayTree.hpp>
-#include <A2B4Tree.hpp>
+
 
 int main() {
-    A2B4Tree tree;
+    AvlTree tree;
     //*
     tree.insertElement(25);
     tree.insertElement(15);

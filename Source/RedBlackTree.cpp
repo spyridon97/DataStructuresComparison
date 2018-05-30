@@ -1,5 +1,5 @@
 /*
- * File:    RedBlackTree.hpp
+ * File:    RedBlackTree.cpp
  * Author:  Spiros
  *
  * Created on May 29, 2018, 5:35 PM
