@@ -9,7 +9,7 @@ This repository includes many trees implementations and compares them by using t
 *   isEmpty()
 *   displayElements()
 
-The Implementations that were used and were modified can be found in the following links:
+The Implementations that were used and modified can be found in the following links:
 *   Modified 234Tree https://github.com/gabrieledcjr/2-3-4-Tree/
 *   Modified AvlTree https://www.geeksforgeeks.org/avl-tree-set-1-insertion/
 *   Modified BinarySearchTree https://proprogramming.org/binary-search-tree-c/
