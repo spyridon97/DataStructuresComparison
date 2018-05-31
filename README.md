@@ -1,4 +1,4 @@
-# Comparison Of Tree Implementations
+# Comparison Of Tree Implementations with C++
 This repository includes many trees implementations and compares them by using the following functions:
 
 *   insertElement(int value)
@@ -18,3 +18,4 @@ The Implementations that were used and modified can be found in the following li
 *   Modified SkipList https://github.com/bewuethr/stroustrup_ppp/blob/master/chapter18/chapter18_ex11.cpp/
 *   Modified SplayTree https://www.geeksforgeeks.org/splay-tree-set-1-insert/
 *   Modified VanEmdeBoasTree https://github.com/dragoun/veb-tree/
+
