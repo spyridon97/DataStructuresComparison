@@ -24,14 +24,16 @@ public:
 
     int getMaxElement();
 
+    bool isEmpty();
+
     void displayElements();
 
 private:
-    typedef struct Node {
+    struct Node {
         int value;
         struct Node *leftChild;
         struct Node *rightChild;
-    } Node;
+    };
 
     Node *root;
 

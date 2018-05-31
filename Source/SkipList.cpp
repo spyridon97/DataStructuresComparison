@@ -112,6 +112,10 @@ int SkipList::getMaxElement() {
     return p1->value;
 }
 
+bool SkipList::isEmpty() {
+    return head.next[0]->value == INF;
+}
+
 void SkipList::displayElements() {
     Element *p = head.next[0];
     while (p->value != INF) {

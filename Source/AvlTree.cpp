@@ -44,6 +44,10 @@ int AvlTree::getMaxElement() {
     return INT_MAX;
 }
 
+bool AvlTree::isEmpty() {
+    return !root;
+}
+
 void AvlTree::displayElements() {
     inOrder(root);
 }

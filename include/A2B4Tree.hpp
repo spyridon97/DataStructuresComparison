@@ -8,6 +8,9 @@
 #ifndef COMPARISONOFTREEIMPLEMENTATIONS_A2B4TREE_HPP
 #define COMPARISONOFTREEIMPLEMENTATIONS_A2B4TREE_HPP
 
+/*
+ *  it has an error while you remove and element it duplicates another the preexisted
+ */
 class A2B4Tree {
 public:
     A2B4Tree();
@@ -23,6 +26,8 @@ public:
     int getMinElement();
 
     int getMaxElement();
+
+    bool isEmpty();
 
     void displayElements();
 

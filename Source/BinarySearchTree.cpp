@@ -73,6 +73,10 @@ int BinarySearchTree::getMaxElement() {
     return INT_MAX;
 }
 
+bool BinarySearchTree::isEmpty() {
+    return !root;
+}
+
 // In Order Traversal
 void BinarySearchTree::displayElements() {
     inOrder(root);

@@ -66,6 +66,10 @@ int ScapeGoatTree::getMaxElement() {
     return INT_MAX;
 }
 
+bool ScapeGoatTree::isEmpty() {
+    return !root;
+}
+
 /* Function for inorder traversal */
 void ScapeGoatTree::displayElements() {
     inOrder(root);

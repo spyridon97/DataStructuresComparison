@@ -25,6 +25,8 @@ public:
 
     int getMaxElement();
 
+    bool isEmpty();
+
     void displayElements();
 
 private:

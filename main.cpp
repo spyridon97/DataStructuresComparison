@@ -16,7 +16,8 @@
 
 int main() {
 
-    RedBlackTree tree;
+    A2B4Tree tree;
+    std::cout << "Tree is Empty: " << tree.isEmpty() << " \n";
     //*
     tree.insertElement(25);
     tree.insertElement(15);
@@ -55,12 +56,12 @@ int main() {
     std::cout << "Contains the Element: " << tree.containsElement(38) << " \n";
     tree.removeElement(38);
     std::cout << "Contains the Element: " << tree.containsElement(5) << " \n";
-    tree.removeElement(5);
     tree.displayElements();
     //*/
 
-    std::cout<<"MinValue = " << tree.getMinElement() <<"\n";
-    std::cout<<"MinValue = " << tree.getMaxElement() <<"\n";
+    std::cout << "Tree is Empty: " << tree.isEmpty() << " \n";
+    std::cout << "MinValue = " << tree.getMinElement() << "\n";
+    std::cout << "MinValue = " << tree.getMaxElement() << "\n";
 
     return 0;
 }

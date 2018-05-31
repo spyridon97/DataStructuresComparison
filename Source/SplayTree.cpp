@@ -45,6 +45,10 @@ int SplayTree::getMaxElement() {
     return INT_MAX;
 }
 
+bool SplayTree::isEmpty() {
+    return !root;
+}
+
 void SplayTree::displayElements() {
     inOrder(root);
 }
@@ -92,7 +96,7 @@ SplayTree::Node *SplayTree::splay(int value, Node *root) {
     if (!root) {
         return nullptr;
     }
-    Node header;
+    Node header{};
     /* header.rChild points to L tree; header.lChild points to R Tree */
     header.leftChild = header.rightChild = nullptr;
     Node *LeftTreeMax = &header;

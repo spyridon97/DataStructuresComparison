@@ -756,6 +756,11 @@ bool A2B4Tree::containsElement(int value) {
     return find(value) != nullptr;
 }
 
+
+bool A2B4Tree::isEmpty() {
+    return !root;
+}
+
 void A2B4Tree::displayElements() {
     if (!root) {
         std::cout << "(tree is empty)";
