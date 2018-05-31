@@ -8,7 +8,7 @@
 #include "VanEmdeBoasTree.hpp"
 
 VanEmdeBoasTree::VanEmdeBoasTree() {
-    root = new Node(65536);
+    root = new Node((int) pow(2, 30));
 }
 
 VanEmdeBoasTree::~VanEmdeBoasTree() {

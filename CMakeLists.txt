@@ -26,4 +26,4 @@ set(SOURCE_FILES
 include_directories(ComparisonOfTreeImplementations Source)
 include_directories(ComparisonOfTreeImplementations include)
 
-add_executable(ComparisonOfTreeImplementations ${HEADER_FILES} ${SOURCE_FILES} main.cpp)
+add_executable(ComparisonOfTreeImplementations ${HEADER_FILES} ${SOURCE_FILES} test.cpp)
