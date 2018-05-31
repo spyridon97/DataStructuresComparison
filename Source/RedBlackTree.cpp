@@ -16,9 +16,13 @@ RedBlackTree::Node::Node(int data) {
 
 RedBlackTree::RedBlackTree() {
     root = nullptr;
+    sizeOfTree = 0;
 }
 
-RedBlackTree::~RedBlackTree() = default;
+RedBlackTree::~RedBlackTree() {
+    root = nullptr;
+    sizeOfTree = 0;
+}
 
 void RedBlackTree::insertElement(int value) {
     auto *node = new Node(value);
@@ -50,6 +54,10 @@ int RedBlackTree::getMaxElement() {
         return maxNode->value;
     }
     return INT_MAX;
+}
+
+int RedBlackTree::size() {
+    return sizeOfTree;
 }
 
 void RedBlackTree::displayElements() {
@@ -282,7 +290,8 @@ void RedBlackTree::fixDeleteRedBlackBTree(Node *&node) {
         } else {
             node->parent->rightChild = nullptr;
         }
-        delete (node);
+        sizeOfTree--;
+        delete node;
         setColor(root, BLACK);
     }
 }
@@ -324,12 +333,13 @@ RedBlackTree::Node *RedBlackTree::findMax(Node *&node) {
 }
 
 void RedBlackTree::inOrder(Node *&ptr) {
-    if (ptr == nullptr) {
+    if (root == nullptr) {
         return;
     }
-
-    inOrder(ptr->leftChild);
-    // cout << ptr->data << " " << ptr->color << endl;
-    std::cout << ptr->value << std::endl;
-    inOrder(ptr->rightChild);
+    if (ptr != nullptr) {
+        inOrder(ptr->leftChild);
+        // std::cout << ptr->value << " " << ptr->color << std::endl;
+        std::cout << ptr->value << "\n";
+        inOrder(ptr->rightChild);
+    }
 }

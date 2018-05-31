@@ -24,6 +24,8 @@ public:
 
     int getMaxElement();
 
+    int size();
+
     void displayElements();
 
 private:
@@ -40,6 +42,8 @@ private:
     };
 
     Node *root;
+
+    int sizeOfTree;
 
     void rotateLeft(Node *&node);
 

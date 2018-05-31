@@ -36,25 +36,23 @@ private:
 
     Node *root;
 
-    void makeEmpty(Node *t);
+    Node* newNode(int key);
 
-    Node *insert(int value, Node *node);
+    Node *insert(Node *node, int value);
 
-    Node *singleRightRotate(Node *&node);
+    Node *rightRotate(Node *node);
 
-    Node *singleLeftRotate(Node *&node);
-
-    Node *doubleLeftRotate(Node *&node);
-
-    Node *doubleRightRotate(Node *&node);
+    Node *leftRotate(Node *node);
 
     Node *containsElement(int value, Node *node);
+
+    int getBalance(Node *node);
 
     Node *findMin(Node *node);
 
     Node *findMax(Node *node);
 
-    Node *remove(int value, Node *node);
+    Node *remove(Node *root, int value);
 
     int height(Node *node);
 

@@ -210,8 +210,8 @@ bool A2B4Tree::removeElement(int value) {
         // Case 1: If root and root has single key
         // and both descendents has single keys
         if (n_ptr == root && n_ptr->valueCount() == 1 &&
-                n_ptr->leftChild->valueCount() == 1 &&
-                n_ptr->mid1Child->valueCount() == 1) {
+            n_ptr->leftChild->valueCount() == 1 &&
+            n_ptr->mid1Child->valueCount() == 1) {
             // Set value for C and R & M2 pointers
             Node *right = n_ptr->mid1Child;
             n_ptr->valueC = right->valueA;
@@ -357,7 +357,7 @@ bool A2B4Tree::removeElement(int value) {
             else if (parent->mid2Child == n_ptr) {
                 // M1 & R have single key, FUSE M2 & R
                 if (parent->rightChild && parent->mid1Child->valueCount() == 1 &&
-                        parent->rightChild->valueCount() == 1) {
+                    parent->rightChild->valueCount() == 1) {
                     // set B
                     n_ptr->valueB = parent->valueC;
                     parent->valueC = nullptr;
@@ -375,7 +375,7 @@ bool A2B4Tree::removeElement(int value) {
 
                     // borrow from R
                 else if (parent->rightChild &&
-                        parent->rightChild->valueCount() >= parent->mid1Child->valueCount()) {
+                         parent->rightChild->valueCount() >= parent->mid1Child->valueCount()) {
                     // set B and pointer M2
                     n_ptr->valueB = parent->valueC;
                     n_ptr->mid2Child = parent->rightChild->leftChild;
@@ -547,9 +547,9 @@ bool A2B4Tree::removeElement(int value) {
                 else if (parent->mid2Child && parent->mid2Child == n_ptr) {
                     // M1, M2 & R has single keys. FUSE M2 & R
                     if ((parent->mid1Child->valueCount() == 1 &&
-                            parent->mid2Child->valueCount() == 1 && !parent->valueC) ||
+                         parent->mid2Child->valueCount() == 1 && !parent->valueC) ||
                         (parent->rightChild && parent->mid1Child->valueCount() == 1 &&
-                                parent->mid2Child->valueCount() == 1 && parent->rightChild->valueCount() == 1)) {
+                         parent->mid2Child->valueCount() == 1 && parent->rightChild->valueCount() == 1)) {
                         n_ptr->valueB = parent->valueC;
                         n_ptr->valueC = parent->rightChild->valueA;
                         parent->rightChild->valueA = nullptr;
@@ -559,7 +559,7 @@ bool A2B4Tree::removeElement(int value) {
                     }
                         // M2 has one key and R has more keys than M1
                     else if (parent->rightChild &&
-                            parent->rightChild->valueCount() >= parent->mid1Child->valueCount()) {
+                             parent->rightChild->valueCount() >= parent->mid1Child->valueCount()) {
                         // borrow from parent C
                         n_ptr->valueB = parent->valueC;
                         // parent C borrow A from R
@@ -590,8 +590,8 @@ bool A2B4Tree::removeElement(int value) {
                 else if (parent->mid1Child && parent->mid1Child == n_ptr) {
                     // L, M1, & M2 has single keys. FUSE L & M1
                     if (parent->leftChild->valueCount() == 1 &&
-                            parent->mid1Child->valueCount() == 1 &&
-                            parent->mid2Child->valueCount() == 1) {
+                        parent->mid1Child->valueCount() == 1 &&
+                        parent->mid2Child->valueCount() == 1) {
                         n_ptr->valueC = n_ptr->valueA;
                         n_ptr->valueB = parent->valueA;
                         n_ptr->valueA = parent->leftChild->valueA;

@@ -16,7 +16,7 @@
 
 int main() {
 
-    ScapeGoatTree tree;
+    AvlTree tree;
     //*
     tree.insertElement(25);
     tree.insertElement(15);
@@ -57,8 +57,8 @@ int main() {
     tree.displayElements();
     //*/
 
-    std::cout<<"MinValue = " << tree.getMinElement() <<"\n";
-    std::cout<<"MinValue = " << tree.getMaxElement() <<"\n";
+    //std::cout<<"MinValue = " << tree.getMinElement() <<"\n";
+    //std::cout<<"MinValue = " << tree.getMaxElement() <<"\n";
 
     return 0;
 }
