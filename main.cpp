@@ -13,10 +13,10 @@
 #include <SkipList.hpp>
 #include <SplayTree.hpp>
 #include <ScapeGoatTree.hpp>
+#include <VanEmdeBoasTree.hpp>
 
-int main() {
-
-    A2B4Tree tree;
+int main(int argc, char *argv[]) {
+    VanEmdeBoasTree tree;
     std::cout << "Tree is Empty: " << tree.isEmpty() << " \n";
     //*
     tree.insertElement(25);
@@ -39,7 +39,7 @@ int main() {
     tree.displayElements();
     //*
     std::cout << "Rest " << "\n";
-    tree.displayElements();
+    //tree.displayElements();
     //*
     std::cout << "Contains the Element: " << tree.containsElement(35) << " \n";
     tree.removeElement(35);
@@ -56,7 +56,7 @@ int main() {
     std::cout << "Contains the Element: " << tree.containsElement(38) << " \n";
     tree.removeElement(38);
     std::cout << "Contains the Element: " << tree.containsElement(5) << " \n";
-    tree.displayElements();
+    //tree.displayElements();
     //*/
 
     std::cout << "Tree is Empty: " << tree.isEmpty() << " \n";

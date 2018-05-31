@@ -11,7 +11,8 @@ set(HEADER_FILES
         include/RedBlackTree.hpp
         include/ScapeGoatTree.hpp
         include/SkipList.hpp
-        include/SplayTree.hpp)
+        include/SplayTree.hpp
+        include/VanEmdeBoasTree.hpp)
 set(SOURCE_FILES
         Source/A2B4Tree.cpp
         Source/AvlTree.cpp
@@ -19,7 +20,8 @@ set(SOURCE_FILES
         Source/RedBlackTree.cpp
         Source/ScapeGoatTree.cpp
         Source/SkipList.cpp
-        Source/SplayTree.cpp)
+        Source/SplayTree.cpp
+        Source/VanEmdeBoasTree.cpp)
 
 include_directories(ComparisonOfTreeImplementations Source)
 include_directories(ComparisonOfTreeImplementations include)
