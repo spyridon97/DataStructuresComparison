@@ -8,54 +8,57 @@
 #ifndef COMPARISONOFTREEIMPLEMENTATIONS_AVLTREE_HPP
 #define COMPARISONOFTREEIMPLEMENTATIONS_AVLTREE_HPP
 
-
 class AvlTree {
 public:
     AvlTree();
 
     ~AvlTree();
 
-    void insertElement(int x);
+    void insertElement(int value);
 
-    void removeElement(int x);
+    void removeElement(int value);
 
-    bool containsElement(int x);
+    bool containsElement(int value);
+
+    int getMinElement();
+
+    int getMaxElement();
 
     void displayElements();
 
 private:
     struct Node {
-        int data;
-        Node *left;
-        Node *right;
+        int value;
+        Node *leftChild;
+        Node *rightChild;
         int height;
     };
+
     Node *root;
 
     void makeEmpty(Node *t);
 
-    Node *insert(int x, Node *t);
+    Node *insert(int value, Node *node);
 
-    Node *singleRightRotate(Node *&t);
+    Node *singleRightRotate(Node *&node);
 
-    Node *singleLeftRotate(Node *&t);
+    Node *singleLeftRotate(Node *&node);
 
-    Node *doubleLeftRotate(Node *&t);
+    Node *doubleLeftRotate(Node *&node);
 
-    Node *doubleRightRotate(Node *&t);
+    Node *doubleRightRotate(Node *&node);
 
-    Node *containsElement(int x, Node *t);
+    Node *containsElement(int value, Node *node);
 
-    Node *findMin(Node *t);
+    Node *findMin(Node *node);
 
-    Node *findMax(Node *t);
+    Node *findMax(Node *node);
 
-    Node *remove(int x, Node *t);
+    Node *remove(int value, Node *node);
 
-    int height(Node *t);
+    int height(Node *node);
 
-    void inOrder(Node *t);
+    void inOrder(Node *node);
 };
-
 
 #endif // COMPARISONOFTREEIMPLEMENTATIONS_AVLTREE_HPP

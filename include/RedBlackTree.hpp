@@ -14,11 +14,15 @@ public:
 
     ~RedBlackTree();
 
-    void insertElement(int x);
+    void insertElement(int value);
 
-    void removeElement(int x);
+    void removeElement(int value);
 
-    bool containsElement(int x);
+    bool containsElement(int value);
+
+    int getMinElement();
+
+    int getMaxElement();
 
     void displayElements();
 
@@ -28,35 +32,36 @@ private:
     };
 
     struct Node {
-        int data;
+        int value;
         int color;
-        Node *left, *right, *parent;
+        Node *leftChild, *rightChild, *parent;
 
         explicit Node(int);
     };
 
     Node *root;
 
-    void rotateLeft(Node *&);
+    void rotateLeft(Node *&node);
 
-    void rotateRight(Node *&);
+    void rotateRight(Node *&node);
 
-    void fixInsertRedBlackTree(Node *&);
+    Node *insert(Node *&root, Node *&node);
 
-    void fixDeleteRedBlackBTree(Node *&);
+    Node *remove(Node *&root, int value);
 
-    void inOrderBST(Node *&);
+    void fixInsertRedBlackTree(Node *&node);
+
+    void fixDeleteRedBlackBTree(Node *&node);
 
     int getColor(Node *&);
 
     void setColor(Node *&, int);
 
-    Node *minValueNode(Node *&);
+    Node *findMin(Node *&);
 
-    Node *insertBST(Node *&, Node *&);
+    Node *findMax(Node *&);
 
-    Node *deleteBST(Node *&, int);
+    void inOrder(Node *&);
 };
-
 
 #endif // COMPARISONOFTREEIMPLEMENTATIONS_REDBLACKTREE_HPP

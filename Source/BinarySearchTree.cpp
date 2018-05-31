@@ -16,44 +16,61 @@ BinarySearchTree::~BinarySearchTree() {
     root = nullptr;
 }
 
-void BinarySearchTree::insertElement(int x) {
+bool BinarySearchTree::insertElement(int value) {
     auto *temp = new Node;
-    temp->info = x;
-    insert(root, temp);
+    temp->value = value;
+    return insert(root, temp);
 }
 
 // Delete Element from the tree
-void BinarySearchTree::removeElement(int item) {
+bool BinarySearchTree::removeElement(int value) {
     Node *parent, *location;
     if (root == nullptr) {
-        return;
+        return false;
     }
-    find(item, &parent, &location);
+    find(value, &parent, &location);
     if (location == nullptr) {
-        return;
+        return false;
     }
-    if (location->left == nullptr && location->right == nullptr) {
+    if (location->leftChild == nullptr && location->rightChild == nullptr) {
         caseA(parent, location);
     }
-    if (location->left != nullptr && location->right == nullptr) {
+    if (location->leftChild != nullptr && location->rightChild == nullptr) {
         caseB(parent, location);
     }
-    if (location->left == nullptr && location->right != nullptr) {
+    if (location->leftChild == nullptr && location->rightChild != nullptr) {
         caseB(parent, location);
     }
-    if (location->left != nullptr && location->right != nullptr) {
+    if (location->leftChild != nullptr && location->rightChild != nullptr) {
         caseC(parent, location);
     }
     delete location;
+    return true;
 }
 
-bool BinarySearchTree::containsElement(int x) {
-    if (root->info == x) {
+bool BinarySearchTree::containsElement(int value) {
+    if (root->value == value) {
         return true;
     }
     Node *parent, *location;
-    find(x, &parent, &location);
+    find(value, &parent, &location);
     return location != nullptr;
+}
+
+int BinarySearchTree::getMinElement() {
+    Node *minNode = findMin(root);
+    if (minNode != nullptr) {
+        return minNode->value;
+    }
+    return INT_MIN;
+}
+
+int BinarySearchTree::getMaxElement() {
+    Node *maxNode = findMax(root);
+    if (maxNode != nullptr) {
+        return maxNode->value;
+    }
+    return INT_MAX;
 }
 
 // In Order Traversal
@@ -62,141 +79,138 @@ void BinarySearchTree::displayElements() {
 }
 
 // Find Element in the Tree
-void BinarySearchTree::find(int item, Node **par, Node **loc) {
+void BinarySearchTree::find(int value, Node **par, Node **loc) {
     Node *ptr, *ptrSave;
     if (root == nullptr) {
         *loc = nullptr;
         *par = nullptr;
         return;
     }
-    if (item == root->info) {
+    if (value == root->value) {
         *loc = root;
         *par = nullptr;
         return;
     }
-    if (item < root->info) {
-        ptr = root->left;
+    if (value < root->value) {
+        ptr = root->leftChild;
     } else {
-        ptr = root->right;
+        ptr = root->rightChild;
     }
     ptrSave = root;
     while (ptr != nullptr) {
-        if (item == ptr->info) {
+        if (value == ptr->value) {
             *loc = ptr;
             *par = ptrSave;
             return;
         }
         ptrSave = ptr;
-        if (item < ptr->info) {
-            ptr = ptr->left;
+        if (value < ptr->value) {
+            ptr = ptr->leftChild;
         } else {
-            ptr = ptr->right;
+            ptr = ptr->rightChild;
         }
     }
     *loc = nullptr;
     *par = ptrSave;
 }
 
-
 // Inserting Element into the Tree
-void BinarySearchTree::insert(Node *tree, Node *newNode) {
+bool BinarySearchTree::insert(Node *node, Node *newNode) {
     if (root == nullptr) {
         root = new Node;
-        root->info = newNode->info;
-        root->left = nullptr;
-        root->right = nullptr;
+        root->value = newNode->value;
+        root->leftChild = nullptr;
+        root->rightChild = nullptr;
         //  std::cout << "Root Node is Added" << std::endl;
-        return;
+        return true;
     }
-    if (tree->info == newNode->info) {
+    if (node->value == newNode->value) {
         //  std::cout << "Element already in the tree" << std::endl;
-        return;
+        return false;
     }
-    if (tree->info > newNode->info) {
-        if (tree->left != nullptr) {
-            insert(tree->left, newNode);
+    if (node->value > newNode->value) {
+        if (node->leftChild != nullptr) {
+            insert(node->leftChild, newNode);
         } else {
-            tree->left = newNode;
-            (tree->left)->left = nullptr;
-            (tree->left)->right = nullptr;
+            node->leftChild = newNode;
+            (node->leftChild)->leftChild = nullptr;
+            (node->leftChild)->rightChild = nullptr;
             //  std::cout << "Node Added To Left" << std::endl;
-            return;
+            return true;
         }
     } else {
-        if (tree->right != nullptr) {
-            insert(tree->right, newNode);
+        if (node->rightChild != nullptr) {
+            insert(node->rightChild, newNode);
         } else {
-            tree->right = newNode;
-            (tree->right)->left = nullptr;
-            (tree->right)->right = nullptr;
+            node->rightChild = newNode;
+            (node->rightChild)->leftChild = nullptr;
+            (node->rightChild)->rightChild = nullptr;
             //  std::cout << "Node Added To Right" << std::endl;
-            return;
+            return true;
         }
     }
+    return false;
 }
-
 
 // * Case A
 void BinarySearchTree::caseA(Node *par, Node *loc) {
     if (par == nullptr) {
         root = nullptr;
     } else {
-        if (loc == par->left) {
-            par->left = nullptr;
+        if (loc == par->leftChild) {
+            par->leftChild = nullptr;
         } else {
-            par->right = nullptr;
+            par->rightChild = nullptr;
         }
     }
 }
-
 
 // * Case B
 void BinarySearchTree::caseB(Node *par, Node *loc) {
     Node *child;
-    if (loc->left != nullptr) {
-        child = loc->left;
+    if (loc->leftChild != nullptr) {
+        child = loc->leftChild;
     } else {
-        child = loc->right;
+        child = loc->rightChild;
     }
     if (par == nullptr) {
         root = child;
     } else {
-        if (loc == par->left) {
-            par->left = child;
+        if (loc == par->leftChild) {
+            par->leftChild = child;
         } else {
-            par->right = child;
+            par->rightChild = child;
         }
     }
 }
 
-
 // * Case C
 void BinarySearchTree::caseC(Node *par, Node *loc) {
-    Node *ptr, *ptrsave, *suc, *parsuc;
-    ptrsave = loc;
-    ptr = loc->right;
-    while (ptr->left != nullptr) {
-        ptrsave = ptr;
-        ptr = ptr->left;
+    Node *ptr, *ptrSave, *suc, *parSuc;
+    ptrSave = loc;
+    ptr = loc->rightChild;
+    while (ptr->leftChild != nullptr) {
+        ptrSave = ptr;
+        ptr = ptr->leftChild;
     }
     suc = ptr;
-    parsuc = ptrsave;
-    if (suc->left == nullptr && suc->right == nullptr) {
-        caseA(parsuc, suc);
+    parSuc = ptrSave;
+    if (suc->leftChild == nullptr && suc->rightChild == nullptr) {
+        caseA(parSuc, suc);
     } else {
-        caseB(parsuc, suc);
+        caseB(parSuc, suc);
     }
     if (par == nullptr) {
         root = suc;
     } else {
-        if (loc == par->left) {
-            par->left = suc;
+        if (loc == par->leftChild) {
+            par->leftChild = suc;
         } else {
-            par->right = suc;
+            par->rightChild = suc;
         }
     }
-    suc->left = loc->left;
-    suc->right = loc->right;
+    suc->leftChild = loc->leftChild;
+    suc->rightChild = loc->rightChild;
 }
 
 // In Order Traversal
@@ -205,8 +219,28 @@ void BinarySearchTree::inOrder(Node *ptr) {
         return;
     }
     if (ptr != nullptr) {
-        inOrder(ptr->left);
-        std::cout << ptr->info << "\n";
-        inOrder(ptr->right);
+        inOrder(ptr->leftChild);
+        std::cout << ptr->value << "\n";
+        inOrder(ptr->rightChild);
+    }
+}
+
+BinarySearchTree::Node *BinarySearchTree::findMin(Node *node) {
+    if (node == nullptr) {
+        return nullptr;
+    } else if (node->leftChild == nullptr) {
+        return node;
+    } else {
+        return findMin(node->leftChild);
+    }
+}
+
+BinarySearchTree::Node *BinarySearchTree::findMax(Node *node) {
+    if (node == nullptr) {
+        return nullptr;
+    } else if (node->rightChild == nullptr) {
+        return node;
+    } else {
+        return findMax(node->rightChild);
     }
 }

@@ -12,10 +12,11 @@
 #include <RedBlackTree.hpp>
 #include <SkipList.hpp>
 #include <SplayTree.hpp>
-
+#include <ScapeGoatTree.hpp>
 
 int main() {
-    AvlTree tree;
+
+    ScapeGoatTree tree;
     //*
     tree.insertElement(25);
     tree.insertElement(15);
@@ -32,6 +33,7 @@ int main() {
     tree.insertElement(38);
     tree.insertElement(69);
     tree.insertElement(69);
+    tree.insertElement(189);
     std::cout << "Contains the Element: " << tree.containsElement(65) << " \n";
     tree.displayElements();
     //*
@@ -54,5 +56,9 @@ int main() {
     tree.removeElement(38);
     tree.displayElements();
     //*/
+
+    std::cout<<"MinValue = " << tree.getMinElement() <<"\n";
+    std::cout<<"MinValue = " << tree.getMaxElement() <<"\n";
+
     return 0;
 }

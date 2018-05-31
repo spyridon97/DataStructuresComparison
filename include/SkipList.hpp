@@ -17,22 +17,27 @@ public:
 
     ~SkipList();
 
-    void insertElement(int x);
+    bool insertElement(int value);
 
-    void removeElement(int x);
+    bool removeElement(int value);
 
-    bool containsElement(int x);
+    bool containsElement(int value);
+
+    int getMinElement();
+
+    int getMaxElement();
 
     void displayElements();
+
 private:
     struct Element {
-        Element(int k, int new_height) : key(k), next((unsigned long long) new_height + 1) {}
+        Element(int k, int new_height) : value(k), next((unsigned long long) new_height + 1) {}
 
-        int key;
+        int value;
         std::vector<Element *> next;
     };
 
-    const int max_height = 16;
+    const int MAX_HEIGHT = 16;
 
     const int INF = std::numeric_limits<int>::max();
 
@@ -42,8 +47,7 @@ private:
 
     int height;
 
-    int random_height();
+    int randomHeight();
 };
-
 
 #endif // COMPARISONOFTREEIMPLEMENTATIONS_SKIPLIST_HPP

@@ -19,7 +19,7 @@ set(SOURCE_FILES
         Source/RedBlackTree.cpp
 
         Source/SkipList.cpp
-        Source/SplayTree.cpp)
+        Source/SplayTree.cpp Source/ScapeGoatTree.cpp include/ScapeGoatTree.hpp)
 
 include_directories(ComparisonOfTreeImplementations Source)
 include_directories(ComparisonOfTreeImplementations include)

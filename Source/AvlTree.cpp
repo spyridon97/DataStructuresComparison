@@ -16,178 +16,194 @@ AvlTree::~AvlTree() {
     delete root;
 }
 
-void AvlTree::insertElement(int x) {
-    root = insert(x, root);
+void AvlTree::insertElement(int value) {
+    root = insert(value, root);
 }
 
-void AvlTree::removeElement(int x) {
-    root = remove(x, root);
+void AvlTree::removeElement(int value) {
+    root = remove(value, root);
 }
 
-bool AvlTree::containsElement(int x) {
-    return containsElement(x, root) != nullptr;
+bool AvlTree::containsElement(int value) {
+    return containsElement(value, root) != nullptr;
 }
 
 void AvlTree::displayElements() {
     inOrder(root);
 }
 
+int AvlTree::getMinElement() {
+    Node *minNode = findMin(root);
+    if (minNode != nullptr) {
+        return minNode->value;
+    }
+    return INT_MIN;
+}
+
+int AvlTree::getMaxElement() {
+    Node *maxNode = findMax(root);
+    if (maxNode != nullptr) {
+        return maxNode->value;
+    }
+    return INT_MAX;
+}
+
 void AvlTree::makeEmpty(AvlTree::Node *t) {
     if (t == nullptr) {
         return;
     }
-    makeEmpty(t->left);
-    makeEmpty(t->right);
+    makeEmpty(t->leftChild);
+    makeEmpty(t->rightChild);
     delete t;
 }
 
-AvlTree::Node *AvlTree::insert(int x, AvlTree::Node *t) {
-    if (t == nullptr) {
-        t = new Node;
-        t->data = x;
-        t->height = 0;
-        t->left = t->right = nullptr;
-    } else if (x < t->data) {
-        t->left = insert(x, t->left);
-        if (height(t->left) - height(t->right) == 2) {
-            if (x < t->left->data) {
-                t = singleRightRotate(t);
+AvlTree::Node *AvlTree::insert(int value, Node *node) {
+    if (node == nullptr) {
+        node = new Node;
+        node->value = value;
+        node->height = 0;
+        node->leftChild = node->rightChild = nullptr;
+    } else if (value < node->value) {
+        node->leftChild = insert(value, node->leftChild);
+        if (height(node->leftChild) - height(node->rightChild) == 2) {
+            if (value < node->leftChild->value) {
+                node = singleRightRotate(node);
             } else {
-                t = doubleRightRotate(t);
+                node = doubleRightRotate(node);
             }
         }
-    } else if (x > t->data) {
-        t->right = insert(x, t->right);
-        if (height(t->right) - height(t->left) == 2) {
-            if (x > t->right->data) {
-                t = singleLeftRotate(t);
+    } else if (value > node->value) {
+        node->rightChild = insert(value, node->rightChild);
+        if (height(node->rightChild) - height(node->leftChild) == 2) {
+            if (value > node->rightChild->value) {
+                node = singleLeftRotate(node);
             } else {
-                t = doubleLeftRotate(t);
+                node = doubleLeftRotate(node);
             }
         }
     }
 
-    t->height = __max(height(t->left), height(t->right)) + 1;
-    return t;
+    node->height = __max(height(node->leftChild), height(node->rightChild)) + 1;
+    return node;
 }
 
-AvlTree::Node *AvlTree::singleRightRotate(AvlTree::Node *&t) {
-    Node *u = t->left;
-    t->left = u->right;
-    u->right = t;
-    t->height = __max(height(t->left), height(t->right)) + 1;
-    u->height = __max(height(u->left), t->height) + 1;
+AvlTree::Node *AvlTree::singleRightRotate(Node *&node) {
+    Node *u = node->leftChild;
+    node->leftChild = u->rightChild;
+    u->rightChild = node;
+    node->height = __max(height(node->leftChild), height(node->rightChild)) + 1;
+    u->height = __max(height(u->leftChild), node->height) + 1;
     return u;
 }
 
-AvlTree::Node *AvlTree::singleLeftRotate(AvlTree::Node *&t) {
-    Node *u = t->right;
-    t->right = u->left;
-    u->left = t;
-    t->height = __max(height(t->left), height(t->right)) + 1;
-    u->height = __max(height(t->right), t->height) + 1;
+AvlTree::Node *AvlTree::singleLeftRotate(Node *&node) {
+    Node *u = node->rightChild;
+    node->rightChild = u->leftChild;
+    u->leftChild = node;
+    node->height = __max(height(node->leftChild), height(node->rightChild)) + 1;
+    u->height = __max(height(node->rightChild), node->height) + 1;
     return u;
 }
 
-AvlTree::Node *AvlTree::doubleRightRotate(AvlTree::Node *&t) {
-    t->left = singleLeftRotate(t->left);
-    return singleRightRotate(t);
+AvlTree::Node *AvlTree::doubleRightRotate(Node *&node) {
+    node->leftChild = singleLeftRotate(node->leftChild);
+    return singleRightRotate(node);
 }
 
-AvlTree::Node *AvlTree::doubleLeftRotate(AvlTree::Node *&t) {
-    t->right = singleRightRotate(t->right);
-    return singleLeftRotate(t);
+AvlTree::Node *AvlTree::doubleLeftRotate(Node *&node) {
+    node->rightChild = singleRightRotate(node->rightChild);
+    return singleLeftRotate(node);
 }
 
 
-AvlTree::Node *AvlTree::containsElement(int x, AvlTree::Node *t) {
-    if (t == nullptr) { // Element not found
+AvlTree::Node *AvlTree::containsElement(int value, Node *node) {
+    if (node == nullptr) { // Element not found
         return nullptr;
-    } else if (x < t->data) { // Searching for element
-        return containsElement(x, t->left);
-    } else if (x > t->data) {
-        return containsElement(x, t->right);
+    } else if (value < node->value) { // Searching for element
+        return containsElement(value, node->leftChild);
+    } else if (value > node->value) {
+        return containsElement(value, node->rightChild);
     } else { // Element found
-        return t;
+        return node;
     }
 }
 
-AvlTree::Node *AvlTree::findMin(AvlTree::Node *t) {
-    if (t == nullptr) {
+AvlTree::Node *AvlTree::findMin(Node *node) {
+    if (node == nullptr) {
         return nullptr;
-    } else if (t->right == nullptr) {
-        return t;
+    } else if (node->leftChild == nullptr) {
+        return node;
     } else {
-        return findMax(t->right);
+        return findMin(node->leftChild);
     }
 }
 
-AvlTree::Node *AvlTree::findMax(Node *t) {
-    if (t == nullptr) {
+AvlTree::Node *AvlTree::findMax(Node *node) {
+    if (node == nullptr) {
         return nullptr;
-    } else if (t->right == nullptr) {
-        return t;
+    } else if (node->rightChild == nullptr) {
+        return node;
     } else {
-        return findMax(t->right);
+        return findMax(node->rightChild);
     }
 }
 
-AvlTree::Node *AvlTree::remove(int x, AvlTree::Node *t) {
+AvlTree::Node *AvlTree::remove(int value, Node *node) {
     Node *temp;
 
-    if (t == nullptr) { // Element not found
+    if (node == nullptr) { // Element not found
         return nullptr;
-    } else if (x < t->data) { // Searching for element
-        t->left = remove(x, t->left);
-    } else if (x > t->data) {
-        t->right = remove(x, t->right);
-    } else if (t->left && t->right) { // Element found With 2 children
-        temp = findMin(t->right);
-        t->data = temp->data;
-        t->right = remove(t->data, t->right);
+    } else if (value < node->value) { // Searching for element
+        node->leftChild = remove(value, node->leftChild);
+    } else if (value > node->value) {
+        node->rightChild = remove(value, node->rightChild);
+    } else if (node->leftChild && node->rightChild) { // Element found With 2 children
+        temp = findMin(node->rightChild);
+        node->value = temp->value;
+        node->rightChild = remove(node->value, node->rightChild);
     } else { // With one or zero child
-        temp = t;
-        if (t->left == nullptr) {
-            t = t->right;
-        } else if (t->right == nullptr) {
-            t = t->left;
+        temp = node;
+        if (node->leftChild == nullptr) {
+            node = node->rightChild;
+        } else if (node->rightChild == nullptr) {
+            node = node->leftChild;
         }
         delete temp;
     }
 
-    if (t == nullptr)
-        return t;
+    if (node == nullptr)
+        return node;
 
-    t->height = __max(height(t->left), height(t->right)) + 1;
+    node->height = __max(height(node->leftChild), height(node->rightChild)) + 1;
 
     // If Node is unbalanced
     // If left Node is deleted, right case
-    if (height(t->left) - height(t->right) == 2) {
-        if (height(t->left->left) - height(t->left->right) == 1) { // right right case
-            return singleLeftRotate(t);
+    if (height(node->leftChild) - height(node->rightChild) == 2) {
+        if (height(node->leftChild->leftChild) - height(node->leftChild->rightChild) == 1) { // right right case
+            return singleLeftRotate(node);
         } else { // right left case
-            return doubleLeftRotate(t);
+            return doubleLeftRotate(node);
         }
-    } else if (height(t->right) - height(t->left) == 2) { // If right Node is deleted, left case
+    } else if (height(node->rightChild) - height(node->leftChild) == 2) { // If right Node is deleted, left case
         // left left case
-        if (height(t->right->right) - height(t->right->left) == 1) {
-            return singleRightRotate(t);
+        if (height(node->rightChild->rightChild) - height(node->rightChild->leftChild) == 1) {
+            return singleRightRotate(node);
         } else { // left right case
-            return doubleRightRotate(t);
+            return doubleRightRotate(node);
         }
     }
-    return t;
+    return node;
 }
 
-int AvlTree::height(AvlTree::Node *t) {
-    return (t == nullptr ? -1 : t->height);
+int AvlTree::height(Node *node) {
+    return (node == nullptr ? -1 : node->height);
 }
 
-void AvlTree::inOrder(AvlTree::Node *t) {
-    if (t == nullptr) {
+void AvlTree::inOrder(AvlTree::Node *node) {
+    if (node == nullptr) {
         return;
     }
-    inOrder(t->left);
-    std::cout << t->data << "\n";
-    inOrder(t->right);
+    inOrder(node->leftChild);
+    std::cout << node->value << "\n";
+    inOrder(node->rightChild);
 }

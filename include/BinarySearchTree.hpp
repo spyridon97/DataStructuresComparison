@@ -14,36 +14,43 @@ public:
 
     ~BinarySearchTree();
 
-    void insertElement(int x);
+    bool insertElement(int value);
 
-    void removeElement(int x);
+    bool removeElement(int value);
 
-    bool containsElement(int x);
+    bool containsElement(int value);
+
+    int getMinElement();
+
+    int getMaxElement();
 
     void displayElements();
 
 private:
     struct Node {
-        int info;
-        struct Node *left;
-        struct Node *right;
+        int value;
+        struct Node *leftChild;
+        struct Node *rightChild;
     };
 
     Node *root;
 
-    void find(int, Node **, Node **);
+    bool insert(Node *node, Node *newNode);
 
-    void insert(Node *, Node *);
+    void find(int value, Node **par, Node **loc);
 
-    void caseA(Node *, Node *);
+    void caseA(Node *par, Node *loc);
 
-    void caseB(Node *, Node *);
+    void caseB(Node *par, Node *loc);
 
-    void caseC(Node *, Node *);
+    void caseC(Node *par, Node *loc);
+
+    Node *findMin(Node *node);
+
+    Node *findMax(Node *node);
 
     void inOrder(Node *);
 
 };
-
 
 #endif // COMPARISONOFTREEIMPLEMENTATIONS_BINARYTREE_HPP

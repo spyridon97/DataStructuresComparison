@@ -14,40 +14,46 @@ public:
 
     ~SplayTree();
 
-    void insertElement(int x);
+    void insertElement(int value);
 
-    void removeElement(int x);
+    void removeElement(int value);
 
-    bool containsElement(int x);
+    bool containsElement(int value);
+
+    int getMinElement();
+
+    int getMaxElement();
 
     void displayElements();
 
 private:
     typedef struct Node {
-        int key;
-        struct Node *lChild;
-        struct Node *rChild;
+        int value;
+        struct Node *leftChild;
+        struct Node *rightChild;
     } Node;
 
     Node *root;
 
-    Node *newNode(int key);
+    Node *newNode(int value);
 
-    inline Node *rrRotate(Node *k2);
+    inline Node *rightRotate(Node *node);
 
-    inline Node *llRotate(Node *k2);
+    inline Node *leftRotate(Node *node);
 
-    Node *splay(int key, Node *root);
+    Node *splay(int value, Node *root);
 
-    Node *insert(int key, Node *root);
+    Node *insert(int value, Node *root);
 
-    Node *remove(int key, Node *root);
+    Node *remove(int value, Node *root);
 
-    Node *search(int key, Node *root);
+    Node *find(int value, Node *root);
+
+    Node *findMin(Node *node);
+
+    Node *findMax(Node *node);
 
     void inOrder(Node *root);
-
 };
-
 
 #endif // COMPARISONOFTREEIMPLEMENTATIONS_SPLAYTREE_HPP

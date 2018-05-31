@@ -8,31 +8,33 @@
 #ifndef COMPARISONOFTREEIMPLEMENTATIONS_A2B4TREE_HPP
 #define COMPARISONOFTREEIMPLEMENTATIONS_A2B4TREE_HPP
 
-#include <iostream>
-
 class A2B4Tree {
 public:
     A2B4Tree();
 
     virtual ~A2B4Tree();
 
-    void insertElement(int x);
+    bool insertElement(int value);
 
-    void removeElement(int x);
+    bool removeElement(int value);
 
-    bool containsElement(int x);
+    bool containsElement(int value);
+
+    int getMinElement();
+
+    int getMaxElement();
 
     void displayElements();
 
 private:
     struct Node {
         // A, B and C are the actual data values in the node
-        int *A;
-        int *B;
-        int *C;
+        int *valueA;
+        int *valueB;
+        int *valueC;
 
         // Child pointers
-        Node *L, *M1, *M2, *R;
+        Node *leftChild, *mid1Child, *mid2Child, *rightChild;
 
         // Constructor to initialize the node with one value. The other two value
         // pointers will be set to null and all child pointers will be set to null.
@@ -40,35 +42,38 @@ private:
         explicit Node(int *valueForA);
 
         // Constructor to initialize the node with one value and two child pointers.
-        Node(int *valueForA, Node *leftChildOfA, Node *rightChildOfA);
+        Node(int *valueA, Node *leftChildOfA, Node *rightChildOfA);
 
-        bool ContainsKey(int key);
+        bool containsValue(int value);
 
-        int *FindsKey(int key);
+        int *findValue(int value);
 
-        void DeleteData();
+        void deleteData();
 
         // Returns true if all three data-value pointers, A, B, and C, are non-null,
         // false otherwise.
-        bool IsFull();
+        bool isFull();
 
         // Returns true if all 4 child pointers are null,
         // implying that the node is a leaf
-        bool IsLeaf();
+        bool isLeaf();
 
-        int ValueCount();
+        int valueCount();
     };
 
-    Node *m_root;
+    Node *root;
 
     void deleteTree(Node *root);
 
-    void display(Node *n);
+    void display(Node *node);
 
-    int *find(int key);
+    int *find(int value);
 
-    int *find(int const &key, Node *&n_ptr);
+    int *find(int const &value, Node *&node);
+
+    Node *findMin(Node *root);
+
+    Node *findMax(Node *root);
 };
-
 
 #endif // COMPARISONOFTREEIMPLEMENTATIONS_A2B4TREE_HPP
