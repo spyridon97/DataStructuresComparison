@@ -355,10 +355,10 @@ ScapeGoatTree::Node *ScapeGoatTree::findMax(Node *node) {
     }
 }
 
-void ScapeGoatTree::inOrder(Node *root) {
-    if (root != nullptr) {
-        inOrder(root->leftChild);
-        std::cout << root->value << "\n";
-        inOrder(root->rightChild);
+void ScapeGoatTree::inOrder(Node *node) {
+    if (node != nullptr) {
+        inOrder(node->leftChild);
+        std::cout << node->value << "\n";
+        inOrder(node->rightChild);
     }
 }

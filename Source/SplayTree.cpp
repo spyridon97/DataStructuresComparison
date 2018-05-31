@@ -250,10 +250,10 @@ SplayTree::Node *SplayTree::findMax(Node *node) {
     }
 }
 
-void SplayTree::inOrder(Node *root) {
-    if (root) {
-        inOrder(root->leftChild);
-        std::cout << root->value << "\n";
-        inOrder(root->rightChild);
+void SplayTree::inOrder(Node *node) {
+    if (node != nullptr) {
+        inOrder(node->leftChild);
+        std::cout << node->value << "\n";
+        inOrder(node->rightChild);
     }
 }

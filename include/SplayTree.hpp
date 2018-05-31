@@ -53,7 +53,7 @@ private:
 
     Node *findMax(Node *node);
 
-    void inOrder(Node *root);
+    void inOrder(Node *node);
 };
 
 #endif // COMPARISONOFTREEIMPLEMENTATIONS_SPLAYTREE_HPP

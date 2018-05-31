@@ -16,7 +16,7 @@
 
 int main() {
 
-    AvlTree tree;
+    BinarySearchTree tree;
     //*
     tree.insertElement(25);
     tree.insertElement(15);
@@ -54,6 +54,8 @@ int main() {
     tree.removeElement(20);
     std::cout << "Contains the Element: " << tree.containsElement(38) << " \n";
     tree.removeElement(38);
+    std::cout << "Contains the Element: " << tree.containsElement(5) << " \n";
+    tree.removeElement(5);
     tree.displayElements();
     //*/
 

@@ -205,7 +205,6 @@ AvlTree::Node *AvlTree::remove(Node *root, int value) {
         // If the value to be deleted is greater than the
         // root's value, then it lies in rightChild subtree
     else if (value > root->value) {
-        //system("pause");
         root->rightChild = remove(root->rightChild, value);
     }
 
@@ -242,8 +241,6 @@ AvlTree::Node *AvlTree::remove(Node *root, int value) {
     if (root == nullptr) {
         return root;
     }
-
-
 
     // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE
     root->height = 1 + __max(height(root->leftChild), height(root->rightChild));
@@ -287,10 +284,9 @@ int AvlTree::height(Node *node) {
 }
 
 void AvlTree::inOrder(AvlTree::Node *node) {
-    if (node == nullptr) {
-        return;
+    if (node != nullptr) {
+        inOrder(node->leftChild);
+        std::cout << node->value << "\n";
+        inOrder(node->rightChild);
     }
-    inOrder(node->leftChild);
-    std::cout << node->value << "\n";
-    inOrder(node->rightChild);
 }

@@ -332,14 +332,11 @@ RedBlackTree::Node *RedBlackTree::findMax(Node *&node) {
     return ptr;
 }
 
-void RedBlackTree::inOrder(Node *&ptr) {
-    if (root == nullptr) {
-        return;
-    }
-    if (ptr != nullptr) {
-        inOrder(ptr->leftChild);
+void RedBlackTree::inOrder(Node *&node) {
+    if (node != nullptr) {
+        inOrder(node->leftChild);
         // std::cout << ptr->value << " " << ptr->color << std::endl;
-        std::cout << ptr->value << "\n";
-        inOrder(ptr->rightChild);
+        std::cout << node->value << "\n";
+        inOrder(node->rightChild);
     }
 }

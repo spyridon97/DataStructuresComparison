@@ -49,7 +49,7 @@ private:
 
     Node *findMax(Node *node);
 
-    void inOrder(Node *);
+    void inOrder(Node *node);
 
 };
 

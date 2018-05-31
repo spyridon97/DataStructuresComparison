@@ -57,15 +57,15 @@ private:
 
     void fixDeleteRedBlackBTree(Node *&node);
 
-    int getColor(Node *&);
+    int getColor(Node *&node);
 
-    void setColor(Node *&, int);
+    void setColor(Node *&node, int color);
 
-    Node *findMin(Node *&);
+    Node *findMin(Node *&node);
 
-    Node *findMax(Node *&);
+    Node *findMax(Node *&node);
 
-    void inOrder(Node *&);
+    void inOrder(Node *&node);
 };
 
 #endif // COMPARISONOFTREEIMPLEMENTATIONS_REDBLACKTREE_HPP

@@ -214,14 +214,11 @@ void BinarySearchTree::caseC(Node *par, Node *loc) {
 }
 
 // In Order Traversal
-void BinarySearchTree::inOrder(Node *ptr) {
-    if (root == nullptr) {
-        return;
-    }
-    if (ptr != nullptr) {
-        inOrder(ptr->leftChild);
-        std::cout << ptr->value << "\n";
-        inOrder(ptr->rightChild);
+void BinarySearchTree::inOrder(Node *node) {
+    if (node != nullptr) {
+        inOrder(node->leftChild);
+        std::cout << node->value << "\n";
+        inOrder(node->rightChild);
     }
 }
 
