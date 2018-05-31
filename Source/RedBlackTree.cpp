@@ -34,7 +34,7 @@ bool RedBlackTree::containsElement(int x) const {
 }
 
 int RedBlackTree::getMinElement() {
-    std::shared_ptr<const RedBlackTree::Node> minNode = findMin(_root);
+    std::shared_ptr<const Node> minNode = findMin(_root);
     if (minNode != nullptr) {
         return minNode->value;
     }
@@ -42,7 +42,7 @@ int RedBlackTree::getMinElement() {
 }
 
 int RedBlackTree::getMaxElement() {
-    std::shared_ptr<const RedBlackTree::Node> maxNode = findMax(_root);
+    std::shared_ptr<const Node> maxNode = findMax(_root);
     if (maxNode != nullptr) {
         return maxNode->value;
     }
@@ -137,7 +137,7 @@ RedBlackTree RedBlackTree::ins(int x) const {
     }
 }
 
-std::shared_ptr<const RedBlackTree::Node> RedBlackTree::findMin(std::shared_ptr<const RedBlackTree::Node> &node) {
+std::shared_ptr<const RedBlackTree::Node> RedBlackTree::findMin(std::shared_ptr<const Node> &node) {
     std::shared_ptr<const Node> ptr = node;
 
     while (ptr->leftChild != nullptr) {
@@ -146,7 +146,7 @@ std::shared_ptr<const RedBlackTree::Node> RedBlackTree::findMin(std::shared_ptr<
     return ptr;
 }
 
-std::shared_ptr<const RedBlackTree::Node> RedBlackTree::findMax(std::shared_ptr<const RedBlackTree::Node> &node) {
+std::shared_ptr<const RedBlackTree::Node> RedBlackTree::findMax(std::shared_ptr<const Node> &node) {
     std::shared_ptr<const Node> ptr = node;
 
     while (ptr->rightChild != nullptr) {

@@ -5,7 +5,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wall")
 set(CMAKE_CXX_STANDARD 17)
 
 set(HEADER_FILES
-        include/A2B4Tree.hpp
         include/AvlTree.hpp
         include/BinarySearchTree.hpp
         include/RedBlackTree.hpp
@@ -14,7 +13,6 @@ set(HEADER_FILES
         include/SplayTree.hpp
         include/VanEmdeBoasTree.hpp)
 set(SOURCE_FILES
-        Source/A2B4Tree.cpp
         Source/AvlTree.cpp
         Source/BinarySearchTree.cpp
         Source/RedBlackTree.cpp

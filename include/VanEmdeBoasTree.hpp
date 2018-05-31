@@ -1,5 +1,5 @@
 /*
- * File:    VanEmdeBoasTree
+ * File:    VanEmdeBoasTree.hpp
  * Author:  Spiros
  *
  * Created on May 31, 2018, 7:38 PM

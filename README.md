@@ -10,7 +10,6 @@ This repository includes many trees implementations and compares them by using t
 *   displayElements()
 
 The Implementations that were used and modified can be found in the following links:
-*   Modified 234Tree https://github.com/gabrieledcjr/2-3-4-Tree/
 *   Modified AvlTree https://www.geeksforgeeks.org/avl-tree-set-1-insertion/
 *   Modified BinarySearchTree https://proprogramming.org/binary-search-tree-c/
 *   Modified RedBlackTree http://coliru.stacked-crooked.com/a/233ea4078dfc6767/

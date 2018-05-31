@@ -8,7 +8,6 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
-#include <A2B4Tree.hpp>
 #include <AvlTree.hpp>
 #include <BinarySearchTree.hpp>
 #include <RedBlackTree.hpp>
@@ -17,9 +16,11 @@
 #include <ScapeGoatTree.hpp>
 #include <VanEmdeBoasTree.hpp>
 
-std::vector<int> readDate() {
-    std::ifstream inFile;
-    std::vector<int> inputNumbers(7481964);
+using namespace std;
+
+vector<int> readDate() {
+    ifstream inFile;
+    vector<int> inputNumbers(7481964);
 
     inFile.open("numbers.txt");
     if (inFile) {
@@ -27,42 +28,52 @@ std::vector<int> readDate() {
             inFile >> inputNumbers[i];
         }
     } else {
-        std::cerr << "Error accessing the file numbers.txt\n";
+        cerr << "Error accessing the file numbers.txt\n";
     }
     return inputNumbers;
 }
 
 int main(int argc, char *argv[]) {
-    std::vector<int> inputNumbers = readDate();
-
+    vector<int> inputNumbers = readDate();
     RedBlackTree tree;
 
-    std::clock_t start = std::clock();
-    std::cout << "Tree is : " << tree.isEmpty() << " \n";
+    clock_t start = clock();
+    cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
     for (int i = 0; i < 7481965; i++) {
         tree.insertElement(inputNumbers[i]);
     }
-    std::cout << "Insert-Duration: " << ((std::clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
-    std::cout << "Tree is : " << tree.isEmpty() << " \n";
+    cout << "Insert-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
+    cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
 
-    start = std::clock();
-    for (int i = 0; i < 7481965; i++) {
-        tree.removeElement(inputNumbers[i]);
+    start = clock();
+    for (int i = 0; i < 1000000; i++) {
+        //  cout << tree.containsElement(3740982) << "\n";
+        tree.containsElement(3740982);
+        tree.containsElement(198765);
+        tree.containsElement(765);
     }
-    std::cout << "Delete-Duration: " << ((std::clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
-    std::cout << "Tree is : " << tree.isEmpty() << " \n";
+    cout << "Contains-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
 
-    start = std::clock();
-    std::cout << tree.containsElement(3740982) << "\n";
-    std::cout << "Contains-Duration: " << ((std::clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
+    start = clock();
+    for (int i = 0; i < 1000000; i++) {
+        //  cout << "MinValue = " << tree.getMinElement() << "\n";
+        tree.getMinElement();
+    }
+    cout << "MinValue-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
 
-    start = std::clock();
-    std::cout << "MinValue = " << tree.getMinElement() << "\n";
-    std::cout << "MinValue-Duration: " << ((std::clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
+    start = clock();
+    for (int i = 0; i < 1000000; i++) {
+        //  cout << "MaxValue = " << tree.getMaxElement() << "\n";
+        tree.getMaxElement();
+    }
+    cout << "MaxValue-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
 
-    start = std::clock();
-    std::cout << "MaxValue = " << tree.getMaxElement() << "\n";
-    std::cout << "MaxValue-Duration: " << ((std::clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
+    start = clock();
+    for (int i = 0; i < 7481965; i++) {
+        //tree.removeElement(inputNumbers[i]);
+    }
+    cout << "Delete-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
+    cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
 
     //tree.displayElements();
     return 0;
