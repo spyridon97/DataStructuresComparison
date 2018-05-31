@@ -57,8 +57,8 @@ int main() {
     tree.displayElements();
     //*/
 
-    //std::cout<<"MinValue = " << tree.getMinElement() <<"\n";
-    //std::cout<<"MinValue = " << tree.getMaxElement() <<"\n";
+    std::cout<<"MinValue = " << tree.getMinElement() <<"\n";
+    std::cout<<"MinValue = " << tree.getMaxElement() <<"\n";
 
     return 0;
 }
