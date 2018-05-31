@@ -16,7 +16,7 @@
 
 int main() {
 
-    BinarySearchTree tree;
+    RedBlackTree tree;
     //*
     tree.insertElement(25);
     tree.insertElement(15);

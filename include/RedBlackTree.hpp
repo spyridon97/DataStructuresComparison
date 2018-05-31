@@ -24,8 +24,6 @@ public:
 
     int getMaxElement();
 
-    int size();
-
     void displayElements();
 
 private:
@@ -38,12 +36,10 @@ private:
         int color;
         Node *leftChild, *rightChild, *parent;
 
-        explicit Node(int);
+        explicit Node(int value);
     };
 
     Node *root;
-
-    int sizeOfTree;
 
     void rotateLeft(Node *&node);
 
@@ -53,9 +49,9 @@ private:
 
     Node *remove(Node *&root, int value);
 
-    void fixInsertRedBlackTree(Node *&node);
+    void fixInsert(Node *&node);
 
-    void fixDeleteRedBlackBTree(Node *&node);
+    void fixDelete(Node *&node);
 
     int getColor(Node *&node);
 

@@ -8,31 +8,29 @@
 #include <RedBlackTree.hpp>
 #include <iostream>
 
-RedBlackTree::Node::Node(int data) {
-    this->value = data;
+RedBlackTree::Node::Node(int value) {
+    this->value = value;
     color = RED;
     leftChild = rightChild = parent = nullptr;
 }
 
 RedBlackTree::RedBlackTree() {
     root = nullptr;
-    sizeOfTree = 0;
 }
 
 RedBlackTree::~RedBlackTree() {
     root = nullptr;
-    sizeOfTree = 0;
 }
 
 void RedBlackTree::insertElement(int value) {
     auto *node = new Node(value);
     root = insert(root, node);
-    fixInsertRedBlackTree(node);
+    fixInsert(node);
 }
 
 void RedBlackTree::removeElement(int value) {
     Node *node = remove(root, value);
-    fixDeleteRedBlackBTree(node);
+    fixDelete(node);
 }
 
 bool RedBlackTree::containsElement(int value) {
@@ -54,10 +52,6 @@ int RedBlackTree::getMaxElement() {
         return maxNode->value;
     }
     return INT_MAX;
-}
-
-int RedBlackTree::size() {
-    return sizeOfTree;
 }
 
 void RedBlackTree::displayElements() {
@@ -139,7 +133,7 @@ void RedBlackTree::rotateRight(Node *&node) {
     node->parent = left_child;
 }
 
-void RedBlackTree::fixInsertRedBlackTree(Node *&node) {
+void RedBlackTree::fixInsert(Node *&node) {
     Node *parent = nullptr;
     Node *grandparent = nullptr;
     while (node != root && getColor(node) == RED && getColor(node->parent) == RED) {
@@ -190,7 +184,7 @@ void RedBlackTree::fixInsertRedBlackTree(Node *&node) {
     setColor(root, BLACK);
 }
 
-void RedBlackTree::fixDeleteRedBlackBTree(Node *&node) {
+void RedBlackTree::fixDelete(Node *&node) {
     if (node == nullptr) {
         return;
     }
@@ -290,7 +284,6 @@ void RedBlackTree::fixDeleteRedBlackBTree(Node *&node) {
         } else {
             node->parent->rightChild = nullptr;
         }
-        sizeOfTree--;
         delete node;
         setColor(root, BLACK);
     }
