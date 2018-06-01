@@ -61,8 +61,9 @@ bool SkipList::removeElement(int value) {
     std::vector<Element *> update((unsigned long long) (MAX_HEIGHT + 1));
     Element *p = &head;
     for (int i = height; i >= 0; --i) {
-        while (p->next[i]->value < value)
+        while (p->next[i]->value < value) {
             p = p->next[i];
+        }
         update[i] = p;
     }
     p = p->next[0];
