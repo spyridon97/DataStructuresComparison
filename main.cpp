@@ -44,8 +44,8 @@ int main(int argc, char *argv[]) {
 
     clock_t start = clock();
     cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
-    for (int i = 0; i < 7481965; i++) {
-        tree.insertElement(inputNumbers[i]);
+    for (int number: inputNumbers) {
+        tree.insertElement(number);
     }
     cout << "Insert-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
     cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
@@ -74,8 +74,8 @@ int main(int argc, char *argv[]) {
     cout << "MaxValue-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
 
     start = clock();
-    for (int i = 0; i < 7481965; i++) {
-        //tree.removeElement(inputNumbers[i]);
+    for (int number: inputNumbers) {
+        tree.removeElement(number);
     }
     cout << "Delete-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
     cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
