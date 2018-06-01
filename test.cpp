@@ -20,12 +20,17 @@ using namespace std;
 
 vector<int> readDate() {
     ifstream inFile;
-    vector<int> inputNumbers(7481964);
+    vector<int> inputNumbers;
+    int input;
 
     inFile.open("numbers.txt");
     if (inFile) {
-        for (int i = 0; i < 7481965; i++) {
-            inFile >> inputNumbers[i];
+        while (true) {
+            inFile >> input;
+            inputNumbers.push_back(input);
+            if (inFile.eof()) {
+                break;
+            }
         }
     } else {
         cerr << "Error accessing the file numbers.txt\n";

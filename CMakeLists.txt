@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(ComparisonOfTreeImplementations)
+project(DataStructuresComparison)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wall")
 set(CMAKE_CXX_STANDARD 17)
@@ -21,7 +21,7 @@ set(SOURCE_FILES
         Source/SplayTree.cpp
         Source/VanEmdeBoasTree.cpp)
 
-include_directories(ComparisonOfTreeImplementations Source)
-include_directories(ComparisonOfTreeImplementations include)
+include_directories(DataStructuresComparison Source)
+include_directories(DataStructuresComparison include)
 
-add_executable(ComparisonOfTreeImplementations ${HEADER_FILES} ${SOURCE_FILES} test.cpp)
+add_executable(DataStructuresComparison ${HEADER_FILES} ${SOURCE_FILES} test.cpp)

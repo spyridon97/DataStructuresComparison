@@ -7,6 +7,7 @@
 
 #include <BinarySearchTree.hpp>
 #include <iostream>
+#include <climits>
 
 BinarySearchTree::BinarySearchTree() {
     root = nullptr;

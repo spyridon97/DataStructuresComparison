@@ -6,6 +6,7 @@
  */
 
 #include <RedBlackTree.hpp>
+#include <climits>
 
 RedBlackTree::RedBlackTree() = default;
 

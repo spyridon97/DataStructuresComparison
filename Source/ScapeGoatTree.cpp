@@ -8,6 +8,7 @@
 #include <ScapeGoatTree.hpp>
 #include <iostream>
 #include <cmath>
+#include <climits>
 
 ScapeGoatTree::ScapeGoatTree() {
     root = nullptr;

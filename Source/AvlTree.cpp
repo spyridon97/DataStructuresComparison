@@ -7,6 +7,7 @@
 
 #include <AvlTree.hpp>
 #include <iostream>
+#include <climits>
 
 AvlTree::AvlTree() {
     root = nullptr;
@@ -71,9 +72,16 @@ AvlTree::Node *AvlTree::rightRotate(Node *node) {
     x->rightChild = node;
     node->leftChild = T2;
 
-    // Update heights
-    node->height = __max(height(node->leftChild), height(node->rightChild)) + 1;
-    x->height = __max(height(x->leftChild), height(x->rightChild)) + 1;
+    // Update height
+    //  for linux
+    node->height = std::max(height(node->leftChild), height(node->rightChild)) + 1;
+    //  for windows
+    //  node->height = __max(height(node->leftChild), height(node->rightChild)) + 1;
+
+    //  for linux
+    x->height = std::max(height(x->leftChild), height(x->rightChild)) + 1;
+    //  for windows
+    //  x->height = __max(height(x->leftChild), height(x->rightChild)) + 1;
 
     // Return new root
     return x;
@@ -90,8 +98,15 @@ AvlTree::Node *AvlTree::leftRotate(Node *node) {
     node->rightChild = T2;
 
     //  Update heights
-    node->height = __max(height(node->leftChild), height(node->rightChild)) + 1;
-    y->height = __max(height(y->leftChild), height(y->rightChild)) + 1;
+    //for linux
+    node->height = std::max(height(node->leftChild), height(node->rightChild)) + 1;
+    //  for windows
+    //  node->height = __max(height(node->leftChild), height(node->rightChild)) + 1;
+
+    //  for linux
+    y->height = std::max(height(y->leftChild), height(y->rightChild)) + 1;
+    //for windows
+    //  y->height = __max(height(y->leftChild), height(y->rightChild)) + 1;
 
     // Return new root
     return y;
@@ -154,7 +169,10 @@ AvlTree::Node *AvlTree::insert(Node *node, int value) {
     }
 
     /* 2. Update height of this ancestor node */
-    node->height = 1 + __max(height(node->leftChild), height(node->rightChild));
+    // for linux
+    node->height = 1 + std::max(height(node->leftChild), height(node->rightChild));
+    //  for windows
+    //  node->height = 1 + __max(height(node->leftChild), height(node->rightChild));
 
     /* 3. Get the balance factor of this ancestor
           node to check whether this node became
@@ -246,8 +264,12 @@ AvlTree::Node *AvlTree::remove(Node *root, int value) {
         return root;
     }
 
+
     // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE
-    root->height = 1 + __max(height(root->leftChild), height(root->rightChild));
+    // for linux
+    root->height = 1 + std::max(height(root->leftChild), height(root->rightChild));
+    //  for windows
+    //  root->height = 1 + __max(height(root->leftChild), height(root->rightChild));
 
     // STEP 3: GET THE BALANCE FACTOR OF THIS NODE (to
     // check whether this node became unbalanced)

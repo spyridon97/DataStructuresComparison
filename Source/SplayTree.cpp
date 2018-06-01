@@ -7,6 +7,7 @@
 
 #include <SplayTree.hpp>
 #include <iostream>
+#include <climits>
 
 SplayTree::SplayTree() {
     root = nullptr;
