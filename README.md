@@ -1,4 +1,4 @@
-# Comparison Of Tree Implementations with C++
+# Data Structures Comparison with C++
 This repository includes many trees implementations and compares them by using the following functions:
 
 *   insertElement(int value)
