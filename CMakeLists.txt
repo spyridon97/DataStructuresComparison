@@ -24,4 +24,4 @@ set(SOURCE_FILES
 include_directories(DataStructuresComparison Source)
 include_directories(DataStructuresComparison include)
 
-add_executable(DataStructuresComparison ${HEADER_FILES} ${SOURCE_FILES} test.cpp)
+add_executable(DataStructuresComparison ${HEADER_FILES} ${SOURCE_FILES} main.cpp)

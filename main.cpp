@@ -18,12 +18,12 @@
 
 using namespace std;
 
-vector<int> readDate() {
+vector<int> readInputNumbers(string filename) {
     ifstream inFile;
     vector<int> inputNumbers;
     int input;
 
-    inFile.open("numbers.txt");
+    inFile.open(filename.c_str());
     if (inFile) {
         while (true) {
             inFile >> input;
@@ -39,8 +39,8 @@ vector<int> readDate() {
 }
 
 int main(int argc, char *argv[]) {
-    vector<int> inputNumbers = readDate();
-    RedBlackTree tree;
+    vector<int> inputNumbers = readInputNumbers("numbers.txt");
+    AvlTree tree;
 
     clock_t start = clock();
     cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
