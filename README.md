@@ -1,5 +1,5 @@
 # Data Structures Comparison with C++
-This repository includes many trees implementations and compares them by using the following functions:
+This repository includes many Data structures implementations and compares them by using the following functions:
 
 *   insertElement(int value)
 *   removeElement(int value)
