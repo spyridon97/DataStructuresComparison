@@ -70,23 +70,23 @@ vector<int> getDescendingNumbers(int inputSize) {
 int main(int argc, char *argv[]) {
     auto inputSize = (int) pow(2, 24);
 
-    vector<int> randomNumbers = getRandomNumbers(inputSize);
+    //  vector<int> randomNumbers = getRandomNumbers(inputSize);
     //  vector<int> ascendingNumbers = getAscendingNumbers(inputSize);
-    //  vector<int> descendingNumbers = getDescendingNumbers(inputSize);
+    vector<int> descendingNumbers = getDescendingNumbers(inputSize);
 
-    vector<int> randomNumbersForFind = getRandomNumbersForFind(inputSize);
+    //  vector<int> randomNumbersForFind = getRandomNumbersForFind(inputSize);
 
     //  use the tree that you want
-    VanEmdeBoasTree tree;
+    AvlTree tree;
 
-    //  random insertion Test
+    /*//  random insertion Test
     clock_t start = clock();
     cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
     for (int number: randomNumbers) {
         tree.insertElement(number);
     }
     cout << "Random-Insert-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
-    cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
+    cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";*/
 
     /*//  ascending insertion Test
     clock_t start = clock();
@@ -97,16 +97,16 @@ int main(int argc, char *argv[]) {
     cout << "Ascending-Insert-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
     cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";*/
 
-    /*//  descending insertion Test
+    //  descending insertion Test
     clock_t start = clock();
     cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
     for (int number: descendingNumbers) {
         tree.insertElement(number);
     }
-    cout << "Random-Insert-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
-    cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";*/
+    cout << "Descending-Insert-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
+    cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
 
-    //  contains Test with random non repetitive numbers
+    /*//  contains Test with random non repetitive numbers
     start = clock();
     for (int number: randomNumbers) {
         //  cout << tree.containsElement(number) << "\n";
@@ -137,16 +137,16 @@ int main(int argc, char *argv[]) {
         //  cout << "MaxValue = " << tree.getMaxElement() << "\n";
         tree.getMaxElement();
     }
-    cout << "MaxValue-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
+    cout << "MaxValue-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";*/
 
-    //  random removal Test
+    /*//  random removal Test
     start = clock();
     cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
     for (int number: randomNumbers) {
         tree.removeElement(number);
     }
     cout << "Random-removal-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
-    cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
+    cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";*/
 
     /*//  ascending removal Test
     start = clock();
@@ -157,14 +157,14 @@ int main(int argc, char *argv[]) {
     cout << "Ascending-removal-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
     cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";*/
 
-    /*//  descending removal Test
+    //  descending removal Test
     start = clock();
     cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
     for (int number: descendingNumbers) {
         tree.removeElement(number);
     }
     cout << "Descending-removal-Duration: " << ((clock() - start) / (double) CLOCKS_PER_SEC) * 1000 << " millisecond\n";
-    cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";*/
+    cout << "Tree is Empty: " << (tree.isEmpty() ? "true" : "false") << " \n";
 
     //tree.displayElements();
     return 0;
