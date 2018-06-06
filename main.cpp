@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
     //  vector<int> randomNumbersForFind = getRandomNumbersForFind(inputSize);
 
     //  use the tree that you want
-    AvlTree tree;
+    RedBlackTree tree;
 
     /*//  random insertion Test
     clock_t start = clock();

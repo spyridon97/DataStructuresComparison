@@ -16,7 +16,7 @@ public:
 
     void insertElement(int value);
 
-    void deleteElement(int value);
+    void removeElement(int value);
 
     int containsElement(int value);
 

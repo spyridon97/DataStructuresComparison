@@ -96,6 +96,7 @@ int RedBlackTree::find(Node *&root, int value) {
     } else if (value > root->value) {
         find(root->right, value);
     }
+    return -1;
 }
 
 
@@ -318,7 +319,7 @@ RedBlackTree::Node *RedBlackTree::deleteBST(Node *&root, int data) {
     return deleteBST(root->right, temp->value);
 }
 
-void RedBlackTree::deleteElement(int data) {
+void RedBlackTree::removeElement(int data) {
     Node *node = deleteBST(root, data);
     fixDelete(node);
 }
@@ -376,24 +377,24 @@ void RedBlackTree::merge(RedBlackTree RedBlackTree2) {
     if (initialblackheight1 > initialblackheight2) {
         c = findMax(root1);
         temp = c->value;
-        deleteElement(c->value);
+        removeElement(c->value);
         root1 = root;
     } else if (initialblackheight2 > initialblackheight1) {
         c = findMin(root2);
         temp = c->value;
-        RedBlackTree2.deleteElement(c->value);
+        RedBlackTree2.removeElement(c->value);
         root2 = RedBlackTree2.root;
     } else {
         c = findMin(root2);
         temp = c->value;
-        RedBlackTree2.deleteElement(c->value);
+        RedBlackTree2.removeElement(c->value);
         root2 = RedBlackTree2.root;
         if (initialblackheight1 != getBlackHeight(root2)) {
             RedBlackTree2.insertElement(c->value);
             root2 = RedBlackTree2.root;
             c = findMax(root1);
             temp = c->value;
-            deleteElement(c->value);
+            removeElement(c->value);
             root1 = root;
         }
     }
